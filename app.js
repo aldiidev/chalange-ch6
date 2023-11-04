@@ -10,8 +10,9 @@ app.use(morgan("dev"));
 app.get("/", (req, res) => {
 	res.status(200).json({
 		status: true,
-		message: "gg gemsing",
+		message: "wellcome chalange 6",
 		err: null,
+		data: null
 	});
 });
 
