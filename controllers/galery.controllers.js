@@ -9,6 +9,16 @@ module.exports = {
 	createPost: async (req, res, next) => {
 		try {
 			let { judul, deskripsi } = req.body;
+			let file = req.file
+
+			if (!file) {
+				return res.status(400).json({
+					status: false,
+					message: 'bad request',
+					err: 'files must be included!',
+					data: null
+				})
+			}
 			let strFile = req.file.buffer.toString("base64");
 
 			let judulexist = await prisma.galeri.findUnique({ where: { judul } });
@@ -99,6 +109,16 @@ module.exports = {
 			let { id } = req.params
 			id = Number(id)
 			let { judul, deskripsi } = req.body;
+			let file = req.file
+
+			if (!file) {
+				return res.status(400).json({
+					status: false,
+					message: 'bad request',
+					err: 'files must be included!',
+					data: null
+				})
+			}
 			let strFile = req.file.buffer.toString("base64");
 
 			try {
