@@ -6,7 +6,7 @@ function generateFilter(props) {
         fileFilter :(req, file, callback) => {
             if (!allowedMimeTypes.includes(file.mimetype)){
                 const err = new Error(`Only ${allowedMimeTypes.join(', ')} allowed to upload!`)
-                return callback(err, false)
+                return callback(err.message, false)
             }
             callback(null,true)
         },
